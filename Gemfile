@@ -61,3 +61,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 3.2"
+
+gem "heroicon"
+
+gem "remixicon", "~> 1.2", ">= 1.2.1"
