@@ -1,8 +1,18 @@
-<div id="mini-calendar" class="p4">
-    <div class="grid grid-cols-7 gap-2">
-        <div class="font-bold">01</div>
-        <div class="font-bold">02</div>
-        <div class="font-bold">03</div>
-        <div class="font-bold">04</div>
+<% current_time = Time.zone.now %>
+
+<div id="mini-calendar" class="p4 text-center">
+    <%= Time.now.strftime("%B")%>
+    <div class="grid grid-cols-7 gap-2 mt-3">
+        <% start_time = current_time.beginning_of_month.beginning_of_week(:monday) %>
+        <% end_time = current_time.end_of_month.end_of_week(:monday) %>
+
+        <% (start_time.to_i..end_time.to_i).step(1.day) do |timestamp| %>
+        <% time = Time.at(timestamp) %>
+        <button class="hover:text-white hover:bg-zinc-700 rounded-full p-0.5">
+            <div class="text-sm font-thin <%= 'text-gray-400' if time.month != current_time.month %>">
+                <%= time.day %>
+            </div>
+        </button>
+        <% end %>
     </div>
 </div>
